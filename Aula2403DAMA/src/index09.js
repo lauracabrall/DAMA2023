@@ -7,33 +7,42 @@ Encerre a entrada de dados quando for digitada uma idade negativa.*/
 
 const prompt = require(`prompt-sync`)()
 
-let idade 
-let sexo
-let salario 
-let maiorIdade = Number(-Infinity)
-let menorIdade = Number(+Infinity)
-let qtdMulheres = 0
-let grupo = parseInt(prompt(`Digite a quantidade de pessoas no grupo: `))
+let qtsHabitantes = 0
+let maiorIdade = Number(-9999)
+let menorIdade = Number(9999)
+let qtdMlhr100 = 0
+let incrementoSalario = 0
 
-for(let i = 0; i < grupo; i++){
-    idade = parseInt(prompt(`Digite a idade do indivíduo(${i}): `))
-    sexo = String(prompt(`Digite o sexo do indivíduo (${i}):  `))
-    salario = parseFloat(prompt(`Digite o salário do indivíduo (${i}): `))
+while (true) {
+    const idade = parseInt(prompt(`Digite uma idade: `))
 
-    if(menorIdade > idade){
-        menorIdade = idade
+    if (idade < 0) {
+        break
     }
 
-    if(maiorIdade < idade){
+    const sexo = parseInt(prompt(`Digite um sexo: `))
+    const salario = parseInt(prompt(`Digite um salário: `))
+
+    incrementoSalario += salario
+    qtsHabitantes++
+
+    if (idade > maiorIdade) {
         maiorIdade = idade
     }
 
-    if(sexo === '1' && salario < 100.00){
-        qtdMulheres++
+    if (idade < menorIdade) {
+        menorIdade = idade
+    }
+
+    if (sexo === 1 && salario <= 100) {
+        qtdMlhr100++
     }
 }
 
-let media = salario/grupo
-console.log(`A média de salário do grupo é ${media}`)
-console.log(`A maior idade do grupo é ${maiorIdade} e a menor idade do grupo é ${menorIdade}`)
-console.log(`A quantidade de mulheres com salário até R$100 é ${qtdMulheres}`)
+const mediaSalario = incrementoSalario / qtsHabitantes
+
+console.log(`Média de salário do grupo: RS${mediaSalario.toFixed(2)}`)
+console.log(`Maior idade do grupo: ${maiorIdade}`)
+console.log(`Menor idade do grupo: ${menorIdade}`)
+console.log(`Quantidade de mulheres com salário até R$ 100.00: ${qtdMlhr100}`)
+
