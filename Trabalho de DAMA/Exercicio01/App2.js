@@ -11,7 +11,9 @@ export default function App() {
         <View style={styles.azul}></View>
       </View>
 
+      <View style={styles.boxe2}>
       <View style={styles.verde}></View>
+      </View>
     </View>
   );
 }
@@ -37,6 +39,8 @@ const styles = StyleSheet.create({
     backgroundColor:"rgba(255, 000, 000, 0.1)",
     borderWidth:"2px",
     borderColor:"rgba(255, 000, 000, 1)",
+    position: 'absolute',
+    left: 0,
   },
 
   azul:{
@@ -45,12 +49,12 @@ const styles = StyleSheet.create({
     backgroundColor:"rgba(000, 000, 255, 0.1)",
     borderWidth:"2px",
     borderColor:"rgba(000, 000, 255, 1)",
+    position: 'absolute',
+    right: 0,
   },
   boxes:{
-    display:"flex",
-    flexDirection:"row",
-    justifyContent:"space-between",
     width:"100%",
+    height: 200,
   },
   verde:{
     width:"200px",
@@ -58,7 +62,12 @@ const styles = StyleSheet.create({
     backgroundColor:"rgba(000, 255, 000, 0.1)",
     borderWidth:"2px",
     borderColor:"rgba(000, 255, 000, 1)",
-    marginHorizontal:"auto",
+    position: 'absolute',
+    left: '50%',
+    transform: 'translateX(-50%)',
+  },
+  boxe2: {
+    width: '100%',
   }
 
 });
